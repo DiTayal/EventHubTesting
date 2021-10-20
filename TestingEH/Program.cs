@@ -7,12 +7,17 @@ namespace TestingEH
 {
     class Program
     {
+        private static  string connectionString = "";
+        private static string eventHubName = "";
+        private static string storageconn = "";
+        private static string blobname = "";
+
 
         static async Task Main()
         {
             Console.WriteLine("Hello");
 
-            Sender sender = new Sender();
+            Sender sender = new Sender(connectionString, eventHubName);
             var senderThreads = 32;
             while (true)
             {
@@ -31,7 +36,7 @@ namespace TestingEH
             }
 
 
-            Consumer consumer = new Consumer();
+            Consumer consumer = new Consumer(connectionString, eventHubName, storageconn, blobname);
             await consumer.consume();
             Console.WriteLine("Bye");
         }

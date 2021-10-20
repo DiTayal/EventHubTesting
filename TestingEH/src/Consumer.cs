@@ -7,15 +7,22 @@ using System.Threading.Tasks;
 
 namespace TestingEH.src
 {
+
+
     class Consumer
     {
-        private const string connectionString = "";
+        private string connectionString;
+        private string eventHubName;
+        private string storageconn;
+        private string blobname;
 
-        private const string eventHubName = "";
-
-        string storageconn = "";
-        string blobname = "";
-
+        public Consumer(string connectionString, string eventHubName, string storageconn, string blobname)
+        {
+            this.connectionString = connectionString;
+            this.eventHubName = eventHubName;
+            this.storageconn = storageconn;
+            this.blobname = blobname;
+        }
 
         public async Task consume()
         {
